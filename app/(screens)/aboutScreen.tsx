@@ -23,7 +23,7 @@ export default function AboutScreen() {
   }, []);
 
   const openGitHub = () => {
-    Linking.openURL('https://github.com/ghostxdx4/PartSync');
+    Linking.openURL('https://github.com/ghostxdx4/PartSync_App');
   };
 
   return (
