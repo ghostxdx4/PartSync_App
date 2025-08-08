@@ -1,4 +1,3 @@
-// app/(modals)/settingsModal.tsx
 import { Feather, Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
@@ -94,7 +93,6 @@ const SettingsModal: React.FC<Props> = ({
             />
           </View>
 
-          {/* Admin Login */}
           <Pressable
             onPress={onTriggerAdminLogin}
             style={{
@@ -111,7 +109,6 @@ const SettingsModal: React.FC<Props> = ({
             <Text style={{ color: '#1E1E2E', marginLeft: 8, fontWeight: 'bold' }}>Admin Login</Text>
           </Pressable>
 
-          {/* About Us */}
           <Pressable
             onPress={() => {
               onClose();
@@ -134,20 +131,6 @@ const SettingsModal: React.FC<Props> = ({
             </Text>
           </Pressable>
 
-
-          {/* Reset Inputs */}
-          <Pressable
-            onPress={confirmReset}
-            style={{
-              backgroundColor: '#F38BA8',
-              borderRadius: 8,
-              padding: 12,
-              marginBottom: 24,
-              alignItems: 'center',
-              flexDirection: 'row',
-              justifyContent: 'center',
-            }}
-          >
             <Feather name="rotate-ccw" size={18} color="#1E1E2E" />
             <Text style={{ color: '#1E1E2E', marginLeft: 8, fontWeight: 'bold' }}>Reset Inputs</Text>
           </Pressable>
