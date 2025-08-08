@@ -3,7 +3,6 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Dimensions, Platform, StyleSheet, Text, View } from 'react-native';
 
-// ✅ Dynamic import to support both platforms
 let LottieComponent: any;
 
 if (Platform.OS === 'web') {
@@ -23,16 +22,14 @@ const tips = [
 
 export default function LoadingScreen() {
   const router = useRouter();
-  const params = useLocalSearchParams(); // { cpuId, psuWattage, connectors, moboPcieVersion, budget, strict }
+  const params = useLocalSearchParams();
   const [tipIndex, setTipIndex] = useState(0);
 
   useEffect(() => {
-    // Cycle tips
     const interval = setInterval(() => {
       setTipIndex((prev) => (prev + 1) % tips.length);
     }, 2500);
 
-    // Fetch recommendations
     const fetchRecommendations = async () => {
       try {
         const res = await axios.post('http://192.168.110.54:5000/api/recommend', {
