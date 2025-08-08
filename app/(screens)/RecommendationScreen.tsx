@@ -20,7 +20,6 @@ const RecommendationScreen = () => {
 
   const data = recommendations ? JSON.parse(recommendations as string) : [];
 
-  // Animations: staggered fade-in + slide-up
   const anims = data.map(() => ({
     opacity: useRef(new Animated.Value(0)).current,
     translateY: useRef(new Animated.Value(30)).current,
@@ -91,8 +90,6 @@ const RecommendationScreen = () => {
                 </View>
               ))}
             </View>
-
-            {/* Add More Info Modal here if needed */}
           </Animated.View>
         ))}
       </ScrollView>
