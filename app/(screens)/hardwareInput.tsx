@@ -14,26 +14,21 @@ export default function HardwareInputScreen() {
   const router = useRouter();
   const [step, setStep] = useState(1);
 
-  // CPU data state
   const [cpus, setCpus] = useState<CPU[]>([]);
   const [filteredCpus, setFilteredCpus] = useState<CPU[]>([]);
   const [searchText, setSearchText] = useState('');
   const [selectedCpu, setSelectedCpu] = useState<CPU | null>(null);
   const [loadingCpu, setLoadingCpu] = useState(true);
 
-  // PSU state
   const [psuWattage, setPsuWattage] = useState('');
   const [connectors, setConnectors] = useState<{ '6-pin': boolean; '8-pin': boolean }>({ '6-pin': false, '8-pin': false });
 
-  // Motherboard state
   const [moboChipset, setMoboChipset] = useState('');
   const [pciVersion, setPciVersion] = useState('');
 
-  // Budget state
   const [budget, setBudget] = useState('');
   const [strictBudget, setStrictBudget] = useState(false);
 
-  // Fetch CPU list on mount
   useEffect(() => {
     fetch('http://192.168.110.54:5000/api/hardware/cpu')
       .then(res => res.json())
@@ -45,7 +40,6 @@ export default function HardwareInputScreen() {
       .finally(() => setLoadingCpu(false));
   }, []);
 
-  // Filter CPUs on search
   useEffect(() => {
     const txt = searchText.trim().toLowerCase();
     if (!txt) {
@@ -69,7 +63,6 @@ export default function HardwareInputScreen() {
   const handleBack = () => setStep(step - 1);
 
   const handleSubmit = () => {
-    // Navigate to Loading and pass data
     router.push({
       pathname: '/(screens)/LoadingScreen',
       params: {
@@ -184,7 +177,6 @@ export default function HardwareInputScreen() {
         </View>
       )}
 
-      {/* Navigation Buttons */}
       <View style={styles.navRow}>
         {step > 1 && (
           <Pressable style={styles.navButton} onPress={handleBack}>
